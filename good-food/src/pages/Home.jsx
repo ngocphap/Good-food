@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 import Helmet from "../components/Helmet/Helmet.js";
-import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  ListGroup,
+  ListGroupItem,
+  CardGroup,
+} from "reactstrap";
 
 import heroImg from "../assets/images/hero.png";
 import "../styles/hero-section.css";
@@ -239,7 +246,7 @@ const Home = () => {
 
             {/* product item card */}
             {allProducts.map((item) => (
-              <Col lg="3" md="4" key={item.id} className="mt-5">
+              <Col md="4" xs="6" sm="6" lg="3" key={item.id} className="mt-5">
                 <ProductCard item={item} />
               </Col>
             ))}
@@ -316,7 +323,7 @@ const Home = () => {
             </Col>
 
             {hotPizza.map((item) => (
-              <Col lg="3" md="4" sm="6" xs="6" key={item.id}>
+              <Col md="4" xs="6" sm="6" lg="3" className="mt-5" key={item.id}>
                 <ProductCard item={item} />
               </Col>
             ))}

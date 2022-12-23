@@ -1,0 +1,11 @@
+.form_page {
+    background: #fde4e4;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.form_page input[type='file'] {
+    color: #6c757d;
+    cursor: pointer;
+    border: none;
+}

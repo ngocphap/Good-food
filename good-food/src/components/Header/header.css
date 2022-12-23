@@ -1,0 +1,181 @@
+.header {
+  position: fixed !important;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 30px;
+  top: 0;
+
+}
+
+
+
+.logo img {
+  width: 80px;
+}
+
+.icon_md {
+  color: #212245;
+  font-size: 30px;
+}
+
+.menu a {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #212245;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #df2020;
+}
+
+.active_menu {
+  color: #df2020 !important;
+}
+
+.user_profile {
+  position: relative;
+  z-index: 999;
+}
+
+.user_profile img {
+  width: 50px;
+  cursor: pointer;
+  border-radius: 100%;
+  border: 1px solid #000;
+  box-shadow: 5px 5px 10px purple
+}
+
+.user_profile .sub_menu {
+  position: absolute;
+  width: 150px;
+  top: 76px;
+  right: 0px;
+  display: none;
+  z-index: 9999;
+}
+
+.show_submenu {
+
+  display: block !important;
+}
+
+.cart_icon,
+.mobile_menu i {
+  font-size: 1.3rem;
+  color: #212245;
+  cursor: pointer;
+}
+
+.cart_icon {
+  position: relative;
+}
+
+.cart_badge {
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  background: #df2020;
+  color: #fff;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile_menu {
+  font-weight: 600;
+  display: none;
+}
+
+.header_shrink {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  background: #fff;
+  z-index: 99999;
+  box-shadow: 5px 5px 15px -5px #fde4e4;
+}
+
+@media only screen and (max-width: 992px) {
+
+
+  .logo img {
+    width: 60px;
+  }
+
+
+
+  .navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.425);
+    z-index: 99;
+    display: none;
+  }
+
+  .menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    line-height: 20px;
+  }
+
+  .menu a {
+    font-size: 0.9rem;
+  }
+
+  .mobile_menu {
+    display: block;
+  }
+
+  .cart_icon i,
+  .mobile_menu i {
+    font-size: 1rem;
+  }
+
+  .show_menu {
+    display: block;
+  }
+
+
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+  }
+
+  .cart_badge {
+    position: absolute;
+    top: 20px;
+    right: -10px;
+    background: #df2020;
+    color: #fff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}

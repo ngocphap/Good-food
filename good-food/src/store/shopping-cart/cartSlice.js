@@ -6,12 +6,12 @@ const items =
     : [];
 
 const totalAmount =
-  localStorage.getItem("totalAmount") !== null
+  localStorage.getItem("totalAmount") !== 0
     ? JSON.parse(localStorage.getItem("totalAmount"))
     : 0;
 
 const totalQuantity =
-  localStorage.getItem("totalQuantity") !== null
+  localStorage.getItem("totalQuantity") !== 0
     ? JSON.parse(localStorage.getItem("totalQuantity"))
     : 0;
 
@@ -59,6 +59,7 @@ const cartSlice = createSlice({
 
       state.totalAmount = state.cartItems.reduce(
         (total, item) => total + Number(item.price) * Number(item.quantity),
+
         0
       );
 

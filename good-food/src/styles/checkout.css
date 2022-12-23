@@ -1,6 +1,13 @@
+.checkout_form .form_group input {
+    border: 1px solid #fde4e4;
+
+}
+
 .checkout_bill {
     background: #fde4e4;
     padding: 30px;
+    color: black;
+    border-radius: 5px;
 }
 
 .checkout_total {

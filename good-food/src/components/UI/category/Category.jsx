@@ -7,25 +7,45 @@ import categoryImg02 from "../../../assets/images/category-02.png";
 import categoryImg03 from "../../../assets/images/category-03.png";
 import categoryImg04 from "../../../assets/images/category-04.png";
 
-import "../../../styles/category.css";
+import "../category/category.css";
 
 const categoryData = [
   {
-    display: "Fastfood",
+    display: "Pizza",
     imgUrl: categoryImg01,
   },
   {
-    display: "Pizza",
+    display: "Mỳ Ý",
     imgUrl: categoryImg02,
   },
 
   {
-    display: "Asian Food",
+    display: "Salad Rau Trộn",
     imgUrl: categoryImg03,
   },
 
   {
-    display: "Row Meat",
+    display: "Các Loại Cơm",
+    imgUrl: categoryImg04,
+  },
+
+  {
+    display: "Nước giải khát",
+    imgUrl: categoryImg04,
+  },
+
+  {
+    display: "Bia ",
+    imgUrl: categoryImg04,
+  },
+
+  {
+    display: "Hamburger",
+    imgUrl: categoryImg04,
+  },
+
+  {
+    display: "Gà Chiên Xù ",
     imgUrl: categoryImg04,
   },
 ];
