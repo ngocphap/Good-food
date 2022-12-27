@@ -11,69 +11,47 @@ const Footer = () => {
     <footer className="footer">
       <Container>
         <Row>
-          <Col lg="3" md="4" sm="6">
+          <Col lg="4" md="4" sm="4">
             <div className=" footer_logo text-start">
               <img src={logo} alt="" />
-
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Nesciunt pariatur accusamus
-              </p>
             </div>
           </Col>
 
-          <Col lg="3" md="4" sm="6">
-            <h5 className="footer_title">Delivery Time</h5>
+          <Col lg="4" md="4" sm="4">
+            <h5 className="footer_title">Thời gian làm việc</h5>
             <ListGroup className="deliver_time-list">
               <ListGroupItem className=" delivery_time-item border-0 ps-0">
-                <span>Sunday - Thursday</span>
-                <p>10:00am - 11:00pm</p>
+                <span>Thứ 2 - Thứ 7</span>
+                <p>7:00am - 10:00pm</p>
               </ListGroupItem>
 
               <ListGroupItem className=" delivery_time-item border-0 ps-0">
-                <span>Friday - Saturday</span>
-                <p>Off day</p>
+                <span>Chủ Nhật</span>
+                <p>9:00am-10:00pm</p>
               </ListGroupItem>
             </ListGroup>
           </Col>
 
-          <Col lg="3" md="4" sm="6">
-            <h5 className="footer_title">Contact</h5>
+          <Col lg="4" md="4" sm="4">
+            <h5 className="footer_title">Thông tin liên hệ</h5>
             <ListGroup className="deliver_time-list">
               <ListGroupItem className=" delivery_time-item border-0 ps-0">
-                <p>Location: ZindaBazar, Sylhet-3100, Bangladesh</p>
+                <p>Đia chỉ: Đường ABC, Thành phố Thủ Đức, Việt Nam</p>
               </ListGroupItem>
               <ListGroupItem className=" delivery_time-item border-0 ps-0">
-                <span>Phone: 01712345678</span>
+                <span>SĐT: 076123456</span>
               </ListGroupItem>
 
               <ListGroupItem className=" delivery_time-item border-0 ps-0">
-                <span>Email: example@gmail.com</span>
+                <span>Email: Foodgood@gmail.com</span>
               </ListGroupItem>
             </ListGroup>
-          </Col>
-
-          <Col lg="3" md="4" sm="6">
-            <h5 className="footer_title">Newsletter</h5>
-            <p>Subscribe our newsletter</p>
-            <div className="newsletter">
-              <input type="email" placeholder="Enter your email" />
-              <span>
-                <i class="ri-send-plane-line"></i>
-              </span>
-            </div>
           </Col>
         </Row>
 
-        <Row className="mt-5">
+        <Row className=" d-flex justify-content-md-end text-md-end justify-content-center text-center ">
           <Col lg="6" md="6">
-            <p className="copyright_text">
-              Copyright - 2022, website made by Muhibur Rahman. All Rights
-              Reserved.
-            </p>
-          </Col>
-          <Col lg="6" md="6">
-            <div className="social_links d-flex align-items-center gap-4 justify-content-end">
+            <div className="social_links d-flex align-items-md-end gap-4 justify-content-md-end justify-content-center text-center">
               <p className="m-0">Follow: </p>
               <span>
                 {" "}

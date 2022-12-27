@@ -15,19 +15,24 @@ import { auth } from "../../firebase.config";
 import userIcon from "../../assets/images/avatar.png";
 
 import "../Header/header.css";
-import { MdShoppingCart } from "react-icons/md";
+import {
+  MdLogin,
+  MdLogout,
+  MdPersonAddAlt1,
+  MdShoppingCart,
+} from "react-icons/md";
 
 const nav_links = [
   {
-    display: "Home",
+    display: "Trang chủ",
     path: "/home",
   },
   {
-    display: "Foods",
+    display: "Thực đơn",
     path: "/foods",
   },
   {
-    display: "Cart",
+    display: "Giỏ Hàng",
     path: "/cart",
   },
 ];
@@ -42,9 +47,10 @@ const Header = () => {
   const profileSubmenuRef = useRef(null);
 
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
   const dispatch = useDispatch();
 
-  const toggleMenu = () => menuRef.current.classList.toggle("show_menu");
+  // const toggleMenu = () => menuRef.current.classList.toggle("show_menu");
 
   const toggleCart = () => {
     dispatch(cartUiActions.toggle());
@@ -57,21 +63,6 @@ const Header = () => {
       })
       .catch((err) => {});
   };
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
-        headerRef.current.classList.add("header_shrink");
-      } else {
-        headerRef.current.classList.remove("header_shrink");
-      }
-    });
-
-    return () => window.removeEventListener("scroll");
-  }, []);
 
   const toggleProfileSubmenu = () =>
     profileSubmenuRef.current.classList.toggle("show_submenu");
@@ -99,7 +90,7 @@ const Header = () => {
               exit={{ opacity: 0, x: 200 }}
               className="navigation"
               ref={menuRef}
-              onClick={toggleMenu}
+              // onClick={toggleMenu}
             >
               <div className="menu d-flex align-items-center gap-5">
                 {nav_links.map((item, index) => (
@@ -133,7 +124,7 @@ const Header = () => {
                   onClick={toggleProfileSubmenu}
                 />
                 <div
-                  className="sub_menu  bg-info  "
+                  className="sub_menu p-3   "
                   ref={profileSubmenuRef}
                   onClick={toggleProfileSubmenu}
                 >
@@ -141,30 +132,45 @@ const Header = () => {
                     <Button
                       onClick={logout}
                       color="danger"
-                      className="text-center align-items-center justify-content-center w-100 m-1"
+                      className="d-flex justify-content-between text-center align-items-center w-100"
                     >
-                      Logout
+                      <div>
+                        <span className="profile_logout ">Đăng xuất</span>
+                      </div>
+
+                      <MdLogout className="fs-4 d-flex text-center align-content-center justify-content-center" />
                     </Button>
                   ) : (
                     <>
-                      <Link to={"/login"}>
-                        <p className="" onClick={() => setIsMenu(false)}>
+                      <Link
+                        to={"/login"}
+                        className="d-flex justify-content-between text-center align-items-center"
+                      >
+                        <div className=" " onClick={() => setIsMenu(false)}>
                           Đăng Nhập
-                        </p>
+                        </div>
+                        <MdLogin className="d-flex align-items-center text-center justify-items-center fs-4" />
                       </Link>
-                      <Link to={"/register"}>
-                        <p className="" onClick={() => setIsMenu(false)}>
+                      <Link
+                        to={"/register"}
+                        className="d-flex justify-content-between text-center align-items-center"
+                      >
+                        <div
+                          className="d-flex justify-content-between fs-6"
+                          onClick={() => setIsMenu(false)}
+                        >
                           Đăng Ký
-                        </p>
+                        </div>
+                        <MdPersonAddAlt1 className="d-flex align-items-center text-center justify-items-center fs-4" />
                       </Link>
                     </>
                   )}
                 </div>
               </div>
 
-              <span className="mobile_menu" onClick={toggleMenu}>
+              {/* <span className="mobile_menu" onClick={toggleMenu}>
                 <i class="ri-menu-line"></i>
-              </span>
+              </span> */}
             </div>
           </Col>
         </Row>

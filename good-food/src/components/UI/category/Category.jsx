@@ -1,52 +1,55 @@
 import React from "react";
 
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Card } from "reactstrap";
 
-import categoryImg01 from "../../../assets/images/category-01.png";
-import categoryImg02 from "../../../assets/images/category-02.png";
-import categoryImg03 from "../../../assets/images/category-03.png";
-import categoryImg04 from "../../../assets/images/category-04.png";
-
+import Salad from "../../../assets/images/Salad_1.jpg";
+import Pizza from "../../../assets/images/Pizza_1.jpg";
+import Burger from "../../../assets/images/hamburger_1.jpg";
+import Pasta from "../../../assets/images/Pasta.jpeg";
+import Chicken from "../../../assets/images/Chicken_1.jpg";
+import Rice from "../../../assets/images/Rice.jpeg";
+import Water from "../../../assets/images/water.jpeg";
+import Beer from "../../../assets/images/beer_demo_3.png";
 import "../category/category.css";
 
 const categoryData = [
   {
     display: "Pizza",
-    imgUrl: categoryImg01,
+    imgUrl: Pizza,
   },
   {
     display: "Mỳ Ý",
-    imgUrl: categoryImg02,
+    imgUrl: Pasta,
   },
 
   {
     display: "Salad Rau Trộn",
-    imgUrl: categoryImg03,
+    imgUrl: Salad,
   },
 
   {
     display: "Các Loại Cơm",
-    imgUrl: categoryImg04,
+    imgUrl: Rice,
   },
 
   {
     display: "Nước giải khát",
-    imgUrl: categoryImg04,
+    imgUrl: Water,
   },
 
   {
     display: "Bia ",
-    imgUrl: categoryImg04,
+    imgUrl: Beer,
   },
 
   {
     display: "Hamburger",
-    imgUrl: categoryImg04,
+    imgUrl: Burger,
   },
 
   {
     display: "Gà Chiên Xù ",
-    imgUrl: categoryImg04,
+    imgUrl: Chicken,
   },
 ];
 
@@ -56,12 +59,12 @@ const Category = () => {
       <Row>
         {categoryData.map((item, index) => (
           <Col lg="3" md="4" sm="6" xs="6" className="mb-4" key={index}>
-            <div className="category_item d-flex align-items-center gap-3">
+            <Card className="category_item d-flex align-items-center gap-3">
               <div className="category_img">
-                <img src={item.imgUrl} alt="category_item" />
+                <img src={item.imgUrl} alt="" className="w-100" />
               </div>
-              <h6>{item.display}</h6>
-            </div>
+              <h6 className="fs-5">{item.display}</h6>
+            </Card>
           </Col>
         ))}
       </Row>

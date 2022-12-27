@@ -1,11 +1,11 @@
 .footer {
   padding-top: 50px;
   padding-bottom: 30px;
-  background: #fde4e4;
+  background: #FF9933;
 }
 
 .footer_logo img {
-  width: calc(100% - 80%);
+  width: 60px;
   margin-bottom: 5px;
 }
 
@@ -34,44 +34,13 @@
 .delivery_time-item p {
   color: #212245;
 }
+
 .footer_title {
   font-size: 1.1rem;
   color: #212245;
   font-weight: 600;
 }
 
-.newsletter {
-  padding: 5px;
-  border: 1px solid #212245;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
-.newsletter input {
-  background: transparent;
-  border: none;
-  outline: none;
-}
-
-.newsletter input:focus {
-  outline: none;
-}
-
-.newsletter span {
-  background: #df2020;
-  padding: 5px 30px;
-  border-radius: 5px;
-}
-
-.newsletter span i {
-  color: #fff;
-}
-
-.newsletter input::placeholder {
-  color: #212245;
-}
 
 .social_links span i {
   padding: 5px;
@@ -80,23 +49,26 @@
   border-radius: 50%;
 }
 
-.copyright_text {
-  font-size: 0.8rem;
-  color: #df2020;
-}
 
 @media only screen and (max-width: 992px) {
-  .newsletter input {
-    padding: 7px;
-    font-size: 0.7rem;
+
+  .footer_logo img {
+    width: 80px;
+    margin-bottom: 5px;
   }
-  .newsletter span {
-    padding: 4px 20px;
-    font-size: 0.7rem;
+
+
+  .footer {
+    padding-top: 50px;
+    padding-bottom: 30px;
+    background: #FF9933;
+    margin-bottom: 60px;
   }
 }
 
 @media only screen and (max-width: 768px) {
+
+
   .footer_title {
     font-size: 0.8rem;
   }
@@ -112,9 +84,7 @@
 }
 
 @media only screen and (max-width: 576px) {
-  .copyright_text {
-    text-align: center;
-  }
+
 
   .social_links p {
     font-size: 0.8rem;
@@ -123,6 +93,7 @@
   .social_links span {
     padding: 4px;
   }
+
   .social_links span a {
     font-size: 0.7rem;
   }

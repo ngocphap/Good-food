@@ -4,7 +4,7 @@ import products from "../assets/fake-data/products";
 import { useParams } from "react-router-dom";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 
 import { useDispatch } from "react-redux";
 import { cartActions } from "../store/shopping-cart/cartSlice";
@@ -14,39 +14,6 @@ import productImg from "../assets/images/category-01.png";
 import ProductCard from "../components/UI/product-card/ProductCard";
 
 const FoodDetails = () => {
-  // return (
-  //   <Helmet title="Product-details">
-  //     <CommonSection title="product 01" />
-  //     <section>
-  //       <Container>
-  //         <Row>
-  //           <Col lg="2" md="2">
-  //             <div className="product_images">
-  //               <div className="img_item">
-  //                 <img src={productImg} alt="" className="w-50" />
-  //               </div>
-  //               <div className="img_item">
-  //                 <img src={productImg} alt="" className="w-50" />
-  //               </div>
-  //               <div className="img_item">
-  //                 <img src={productImg} alt="" className="w-50" />
-  //               </div>
-  //             </div>
-  //           </Col>
-
-  //           <Col lg="4" md="4">
-  //             <div className="product_main_img">
-  //               <img src={productImg} alt="" className="w-100" />
-  //             </div>
-  //           </Col>
-
-  //           <Col lg="6" md="6"></Col>
-  //         </Row>
-  //       </Container>
-  //     </section>
-  //   </Helmet>
-  // );
-
   const [tab, setTab] = useState("desc");
   const [enteredName, setEnteredName] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -127,15 +94,19 @@ const FoodDetails = () => {
                 <h2 className="product_title mb-3">{title}</h2>
                 <p className="product_price">
                   {" "}
-                  Price: <span>${price}</span>
+                  Giá:{" "}
+                  <span>
+                    {" "}
+                    {new Intl.NumberFormat().format(price) + ",000đ"}
+                  </span>
                 </p>
                 <p className="category mb-5">
-                  Category: <span>{category}</span>
+                  Loại: <span>{category}</span>
                 </p>
 
-                <button onClick={addItem} className="addTOCart_btn">
-                  Add to Cart
-                </button>
+                <Button onClick={addItem} className="bg-success">
+                  Thêm vào giỏ hàng
+                </Button>
               </div>
             </Col>
 
@@ -145,13 +116,13 @@ const FoodDetails = () => {
                   className={` ${tab === "desc" ? "tab_active" : ""}`}
                   onClick={() => setTab("desc")}
                 >
-                  Description
+                  Miêu tả
                 </h6>
                 <h6
                   className={` ${tab === "rev" ? "tab_active" : ""}`}
                   onClick={() => setTab("rev")}
                 >
-                  Review
+                  Đánh giá
                 </h6>
               </div>
 
@@ -162,27 +133,27 @@ const FoodDetails = () => {
               ) : (
                 <div className="tab_form mb-3">
                   <div className="review pt-5">
-                    <p className="user_name mb-0">Jhon Doe</p>
-                    <p className="user_email">jhon1@gmail.com</p>
-                    <p className="feedback_text">great product</p>
+                    <p className="user_name mb-0">Nguyễn văn A</p>
+                    <p className="user_email">NVA@gmail.com</p>
+                    <p className="feedback_text">Ngon tuyệt</p>
                   </div>
 
                   <div className="review">
-                    <p className="user_name mb-0">Jhon Doe</p>
-                    <p className="user_email">jhon1@gmail.com</p>
-                    <p className="feedback_text">great product</p>
+                    <p className="user_name mb-0">Nguyễn Văn B</p>
+                    <p className="user_email">NVB@gmail.com</p>
+                    <p className="feedback_text">Wow</p>
                   </div>
 
                   <div className="review">
-                    <p className="user_name mb-0">Jhon Doe</p>
-                    <p className="user_email">jhon1@gmail.com</p>
-                    <p className="feedback_text">great product</p>
+                    <p className="user_name mb-0">Nguyễn Văn C</p>
+                    <p className="user_email">NVC@gmail.com</p>
+                    <p className="feedback_text">pizzza</p>
                   </div>
                   <form className="form" onSubmit={submitHandler}>
                     <div className="form_group">
                       <input
                         type="text"
-                        placeholder="Enter your name"
+                        placeholder="Nhập tên của bạn"
                         onChange={(e) => setEnteredName(e.target.value)}
                         required
                       />
@@ -191,7 +162,7 @@ const FoodDetails = () => {
                     <div className="form_group">
                       <input
                         type="text"
-                        placeholder="Enter your email"
+                        placeholder="Nhập Email"
                         onChange={(e) => setEnteredEmail(e.target.value)}
                         required
                       />
@@ -201,14 +172,14 @@ const FoodDetails = () => {
                       <textarea
                         rows={5}
                         type="text"
-                        placeholder="Write your review"
+                        placeholder="Viết đánh giá"
                         onChange={(e) => setReviewMsg(e.target.value)}
                         required
                       />
                     </div>
 
                     <button type="submit" className="addTOCart_btn">
-                      Submit
+                      Đăng
                     </button>
                   </form>
                 </div>
@@ -216,7 +187,7 @@ const FoodDetails = () => {
             </Col>
 
             <Col lg="12" className="mb-5 mt-4">
-              <h2 className="related_Product-title">You might also like</h2>
+              <h2 className="related_Product-title">Những món tương tự</h2>
             </Col>
 
             {relatedProduct.map((item) => (

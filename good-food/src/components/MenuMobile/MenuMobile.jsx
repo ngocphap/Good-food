@@ -20,11 +20,10 @@ const MenuMobile = () => {
       <ul id="menu">
         {/* pre */}
         <MenuContainer link={"/home"} icon={<Home />} isHome />
-        {/* pre */}
-        <MenuContainer link={"/cart"} icon={<LocalMallRounded />} />
-        {/* pre */}
+
         <MenuContainer link={"/foods"} icon={<WidgetsRoundedIcon />} />
-        {/* pre */}
+        <MenuContainer link={"/cart"} icon={<LocalMallRounded />} />
+
         <MenuContainer link={"/checkout"} icon={<PersonRounded />} />
 
         <div className="indicator"></div>

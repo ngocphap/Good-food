@@ -4,7 +4,7 @@ import CommonSection from "../components/UI/common-section/CommonSection";
 import Helmet from "../components/Helmet/Helmet";
 import "../styles/cart-page.css";
 import { useSelector, useDispatch } from "react-redux";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import { cartActions } from "../store/shopping-cart/cartSlice";
 import { Link } from "react-router-dom";
 
@@ -13,22 +13,22 @@ const Cart = () => {
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   return (
     <Helmet title="Cart">
-      <CommonSection title="Your Cart" />
+      <CommonSection title="Giỏ hàng" />
       <section>
         <Container>
           <Row>
             <Col lg="12">
               {cartItems.length === 0 ? (
-                <h5 className="text-center">Your cart is empty</h5>
+                <h5 className="text-center">Giỏ hàng chưa có Món ăn</h5>
               ) : (
                 <table className="table table-bordered">
                   <thead>
                     <tr>
-                      <th>Image</th>
-                      <th>Product Title</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Delete</th>
+                      <th>Ảnh</th>
+                      <th>Tên</th>
+                      <th>Giá</th>
+                      <th>Số lượng</th>
+                      <th>Xóa</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -41,17 +41,20 @@ const Cart = () => {
 
               <div className="mt-4">
                 <h6>
-                  Subtotal: $
-                  <span className="cart_subtotal">{totalAmount}</span>
+                  Tổng tiền:
+                  <span className="cart_subtotal">
+                    {" "}
+                    {new Intl.NumberFormat().format(totalAmount) + ",000đ"}
+                  </span>
                 </h6>
-                <p>Taxes and shipping will calculate at checkout</p>
+                <p>Thuế và vận chuyển sẽ được tính khi thanh toán</p>
                 <div className="cart_page-btn">
-                  <button className="addTOCart_btn me-4">
-                    <Link to="/foods">Continue Shopping</Link>
-                  </button>
-                  <button className="addTOCart_btn">
-                    <Link to="/checkout">Proceed to checkout</Link>
-                  </button>
+                  <Button className="bg-success me-4">
+                    <Link to="/foods">Tiếp tục đặt hàng</Link>
+                  </Button>
+                  <Button className="bg-danger">
+                    <Link to="/checkout">Thanh toán</Link>
+                  </Button>
                 </div>
               </div>
             </Col>
@@ -75,10 +78,14 @@ const Tr = (props) => {
         <img src={image01} alt="" />
       </td>
       <td className="text-center">{title}</td>
-      <td className="text-center">${price}</td>
-      <td className="text-center">{quantity}px</td>
-      <td className="text-center cart_item-del">
-        <i class="ri-delete-bin-line" onClick={deleteItem}></i>
+      <td className="text-center">
+        {new Intl.NumberFormat().format(price) + ",000đ"}
+      </td>
+      <td className="text-center">{quantity}</td>
+      <td className="text-center ">
+        <Button className="bg-danger border-0 w-50">
+          <i class="ri-delete-bin-line fs-5" onClick={deleteItem}></i>
+        </Button>
       </td>
     </tr>
   );

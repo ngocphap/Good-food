@@ -14,15 +14,18 @@ import Helmet from "../components/Helmet/Helmet";
 
 import "../styles/checkout.css";
 import { cartActions } from "../store/shopping-cart/cartSlice";
+import useAuth from "../custom-hooks/useAuth";
 
 const Checkout = () => {
-  const [enterName, setEnterName] = useState("");
-  const [enterEmail, setEnterEmail] = useState("");
-  const [enterNumber, setEnterNumber] = useState("");
-  const [enterCountry, setEnterCountry] = useState("");
-  const [enterCity, setEnterCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
+  const [address, setAddress] = useState("");
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [numberSDT, setNumberSDT] = useState(0);
+
+  const { currentUser } = useAuth();
+  console.log(currentUser.numberSDT);
   const shippingInfo = [];
 
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -35,12 +38,10 @@ const Checkout = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     const userShippingAddress = {
-      name: enterName,
-      email: enterEmail,
-      phone: enterNumber,
-      country: enterCountry,
-      city: enterCity,
-      postalCode: postalCode,
+      name: displayName,
+      email: email,
+      phone: numberSDT,
+      address: address,
     };
 
     shippingInfo.push(userShippingAddress);
@@ -49,7 +50,7 @@ const Checkout = () => {
 
   return (
     <Helmet title="Checkout">
-      <CommonSection title="Checkout" />
+      <CommonSection title="Thanh toán" />
       <section>
         <Container>
           <Row>
@@ -61,7 +62,8 @@ const Checkout = () => {
                     type="email"
                     placeholder="Nhập Email"
                     required
-                    onChange={(e) => setEnterName(e.target.value)}
+                    value={currentUser.email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </FormGroup>
 
@@ -70,16 +72,18 @@ const Checkout = () => {
                     type="text"
                     placeholder="Họ và tên"
                     required
-                    onChange={(e) => setEnterEmail(e.target.value)}
+                    value={currentUser.displayName}
+                    onChange={(e) => setDisplayName(e.target.value)}
                   />
                 </FormGroup>
 
                 <FormGroup className="form_group">
                   <input
-                    type="number"
-                    placeholder="Số diendj thoại"
+                    type="text"
+                    placeholder="Số điện thoại"
                     required
-                    onChange={(e) => setEnterNumber(e.target.value)}
+                    value={currentUser.numberSDT}
+                    onChange={(e) => setNumberSDT(e.target.value)}
                   />
                 </FormGroup>
                 <FormGroup className="form_group">
@@ -87,28 +91,13 @@ const Checkout = () => {
                     type="text"
                     placeholder="Địa chỉ"
                     required
-                    onChange={(e) => setEnterCountry(e.target.value)}
+                    onChange={(e) => setAddress(e.target.value)}
                   />
                 </FormGroup>
-                <FormGroup className="form_group">
-                  <input
-                    type="text"
-                    placeholder="Tỉnh thành"
-                    required
-                    onChange={(e) => setEnterCity(e.target.value)}
-                  />
-                </FormGroup>
-                <FormGroup className="form_group">
-                  <input
-                    type="text"
-                    placeholder="Quận huyện"
-                    required
-                    onChange={(e) => setPostalCode(e.target.value)}
-                  />
-                </FormGroup>
-                <button type="submit" className="addTOCart_btn">
-                  Payment
-                </button>
+
+                <Button type="submit" className="bg-danger">
+                  Thanh toán
+                </Button>
               </Form>
             </Col>
 
@@ -130,17 +119,29 @@ const Checkout = () => {
                   </tbody>
                 </Table>
                 <h6 className="d-flex align-items-center justify-content-between mb-3">
-                  Total Qty: <span>{totalQty}</span>
+                  Tổng số lượng:
+                  <span>{totalQty}</span>
                 </h6>
                 <h6 className="d-flex align-items-center justify-content-between mb-3">
-                  Subtotal: <span>${cartTotalAmount}</span>
+                  Tổng tiền:{" "}
+                  <span>
+                    {new Intl.NumberFormat().format(cartTotalAmount) + ",000đ"}
+                    {}
+                  </span>
                 </h6>
                 <h6 className="d-flex align-items-center justify-content-between mb-3">
-                  Shipping: <span>${shippingCost}</span>
+                  Phí vận chuyển:{" "}
+                  <span>
+                    {new Intl.NumberFormat().format(shippingCost) + ",000đ"}
+                    {}
+                  </span>
                 </h6>
                 <div className="checkout_total pb-5">
                   <h5 className="d-flex align-items-center justify-content-between">
-                    Total Cost: <span>${totalAmount}</span>
+                    Tổng tiền:{" "}
+                    <span>
+                      {new Intl.NumberFormat().format(totalAmount) + ",000đ"}
+                    </span>
                   </h5>
                 </div>
                 <Button color="success" className="buy_btn auth_btn w-100">
@@ -169,7 +170,11 @@ const Tr = (props) => {
       </td>
       <td className="text-center">{title}</td>
       <td className="text-center">{quantity}</td>
-      <td className="text-center">${price}</td>
+      <td className="text-center">
+        {" "}
+        {new Intl.NumberFormat().format(price) + ",000đ"}
+        {}
+      </td>
     </tr>
   );
 };

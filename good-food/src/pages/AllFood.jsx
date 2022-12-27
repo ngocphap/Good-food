@@ -42,7 +42,7 @@ const AllFoods = () => {
 
   return (
     <Helmet title="All-Foods">
-      <CommonSection title="All Foods" />
+      <CommonSection title="Thực đơn" />
 
       <section>
         <Container>
@@ -51,7 +51,7 @@ const AllFoods = () => {
               <div className="search_widget d-flex align-items-center justify-content-between ">
                 <input
                   type="text"
-                  placeholder="I'm looking for...."
+                  placeholder="Tìm kiếm"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />

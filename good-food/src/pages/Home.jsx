@@ -10,7 +10,7 @@ import {
   CardGroup,
 } from "reactstrap";
 
-import heroImg from "../assets/images/hero.png";
+import heroImg from "../assets/images/banner.png";
 import "../styles/hero-section.css";
 
 import { Link } from "react-router-dom";
@@ -19,39 +19,36 @@ import Category from "../components/UI/category/Category.jsx";
 
 import "../styles/home.css";
 
-import featureImg01 from "../assets/images/service-01.png";
+import featureImg01 from "../assets/images/Quick-delivery.png";
 import featureImg02 from "../assets/images/service-02.png";
 import featureImg03 from "../assets/images/service-03.png";
 
 import products from "../assets/fake-data/products.js";
 
-import foodCategoryImg01 from "../assets/images/hamburger.png";
-import foodCategoryImg02 from "../assets/images/pizza.png";
-import foodCategoryImg03 from "../assets/images/bread.png";
-
 import ProductCard from "../components/UI/product-card/ProductCard.jsx";
 
-import whyImg from "../assets/images/location.png";
+import whyImg from "../assets/images/delivery_1.png";
 
-import networkImg from "../assets/images/network.png";
-import TestimonialSlider from "../components/UI/slider/TestimonialSlider.jsx";
+// import networkImg from "../assets/images/network.png";
+// import TestimonialSlider from "../components/UI/slider/TestimonialSlider.jsx";
+import FoodPopular from "../components/UI/food-popular/FoodPopular.jsx";
 
 // import TestimonialSlider from "../components/UI/slider/TestimonialSlider.jsx";
 
 const featureData = [
   {
-    title: "Quick Delivery",
+    title: "Vận chuyển nhanh",
     imgUrl: featureImg01,
     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.",
   },
 
   {
-    title: "Super Dine In",
+    title: "Món ăn đến đúng giờ",
     imgUrl: featureImg02,
     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.",
   },
   {
-    title: "Easy Pick Up",
+    title: "Dễ dàng lựa chọn",
     imgUrl: featureImg03,
     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus, doloremque.",
   },
@@ -59,8 +56,8 @@ const featureData = [
 
 const Home = () => {
   // su dung useState va useEffect de tim va load san pham
-  const [category, setCategory] = useState("ALL");
-  const [allProducts, setAllProducts] = useState(products);
+  // const [category, setCategory] = useState("ALL");
+  // const [allProducts, setAllProducts] = useState(products);
 
   const [hotPizza, setHotPizza] = useState([]);
 
@@ -73,36 +70,6 @@ const Home = () => {
     setHotPizza(slicePizza);
   }, []);
 
-  useEffect(() => {
-    if (category === "ALL") {
-      setAllProducts(products);
-    }
-
-    if (category === "BURGER") {
-      const filteredProducts = products.filter(
-        (item) => item.category === "Burger"
-      );
-
-      setAllProducts(filteredProducts);
-    }
-
-    if (category === "PIZZA") {
-      const filteredProducts = products.filter(
-        (item) => item.category === "Pizza"
-      );
-
-      setAllProducts(filteredProducts);
-    }
-
-    if (category === "BREAD") {
-      const filteredProducts = products.filter(
-        (item) => item.category === "Bread"
-      );
-
-      setAllProducts(filteredProducts);
-    }
-  }, [category]);
-
   return (
     <Helmet title="Home">
       <section className="bg-white">
@@ -110,10 +77,10 @@ const Home = () => {
           <Row>
             <Col lg="6" md="6">
               <div className="hero_content   ">
-                <h5 className="mb-3">Easy way to make an order</h5>
+                <h5 className="mb-3">Đặt đồ ăn có ngay lập tức !</h5>
                 <h1 className="mb-4 hero_title">
-                  <span>HUNGRY?</span> Just wait <br /> food at
-                  <span> your door</span>
+                  <span>BẠN THÈM PIZZA</span> chỉ cần đợi <br />
+                  <span> Ngay cửa nhà bạn ! </span>
                 </h1>
 
                 <p>
@@ -123,11 +90,15 @@ const Home = () => {
 
                 <div className="hero_btns d-flex align-items-center gap-5 mt-4">
                   <button className="order_btn d-flex align-items-center justify-content-between">
-                    Order now <i class="ri-arrow-right-s-line"></i>
+                    <a href="#menu_popular" className="d-flex text-center">
+                      Đặt hàng ngay <i class="ri-arrow-right-s-line "></i>
+                    </a>
                   </button>
 
                   <button className="all_foods-btn">
-                    <Link to="/foods">See all foods</Link>
+                    <Link to="/foods" className="d-flex text-center">
+                      Xem tất cả đồ ăn <i class="ri-arrow-right-s-line"></i>
+                    </Link>
                   </button>
                 </div>
 
@@ -135,15 +106,15 @@ const Home = () => {
                   <p className=" d-flex align-items-center gap-2 ">
                     <span className="shipping_icon">
                       <i class="ri-car-line"></i>
-                    </span>{" "}
-                    No shipping charge
+                    </span>
+                    Miễn phí giao hàng
                   </p>
 
                   <p className=" d-flex align-items-center gap-2 ">
                     <span className="shipping_icon">
                       <i class="ri-shield-check-line"></i>
-                    </span>{" "}
-                    100% secure checkout
+                    </span>
+                    100% An toàn khi thanh toán
                   </p>
                 </div>
               </div>
@@ -159,101 +130,35 @@ const Home = () => {
       </section>
       {/* category */}
       <section className="pt-0">
-        <Category />
-      </section>
-      {/* text category */}
-      <section>
         <Container>
           <Row>
-            <Col lg="12" className="text-center">
-              <h5 className="feature_subtitle mb-4">What we serve</h5>
-              <h2 className="feature_title">Just sit back at home</h2>
-              <h2 className="feature_title">
-                we will <span>take care</span>
-              </h2>
-              <p className="mb-1 mt-4 feature_text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-                ab id officiis tenetur beatae recusandae labore animi quas
-                distinctio vero magnam rem voluptatum excepturi accusamus,
-                exercitationem laboriosam ipsam inventore. Voluptate.{""}
-              </p>
-              <p className="feature_text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. A,
-                expedita?
-              </p>
+            <Col lg="12">
+              <h2 className="text-center mb-5">Thực đơn của chúng tôi</h2>
+              <Category />
             </Col>
-            {/* feature item */}
-            {featureData.map((item, index) => (
-              <Col lg="4" md="4" key={index} className="mt-5">
-                <div className="feature_item text-center p-4">
-                  <img src={item.imgUrl} alt="" className="w-25 mb-3" />
-                  <h5 className="fw-bold">{item.title}</h5>
-                  <p>{item.desc}</p>
-                </div>
-              </Col>
-            ))}
           </Row>
         </Container>
       </section>
 
       {/* cart item */}
-      <section>
+
+      <FoodPopular />
+      {/* hot pizza */}
+      <section className="pt-0">
         <Container>
           <Row>
-            <Col lg="12" className="text-center">
-              <h2>Popular Foods</h2>
+            <Col lg="12" className="text-center mb-5 ">
+              <h2>Pizza được mua nhiều nhất</h2>
             </Col>
 
-            <Col lg="12">
-              <div className="food_category d-flex align-items-center justify-content-center gap-5">
-                <button
-                  className={`all_btn ${
-                    category === "ALL" ? "foodBtnActive" : ""
-                  }`}
-                  onClick={() => setCategory("ALL")}
-                >
-                  All
-                </button>
-                <button
-                  className={`d-flex align-items-center gap-2 ${
-                    category === "BURGER" ? "foodBtnActive" : ""
-                  }`}
-                  onClick={() => setCategory("BURGER")}
-                >
-                  <img src={foodCategoryImg01} alt="" />
-                  Burger
-                </button>
-                <button
-                  className={`d-flex align-items-center gap-2 ${
-                    category === "PIZZA" ? "foodBtnActive" : ""
-                  }`}
-                  onClick={() => setCategory("PIZZA")}
-                >
-                  <img src={foodCategoryImg02} alt="" />
-                  Pizza
-                </button>
-                <button
-                  className={`d-flex align-items-center gap-2 ${
-                    category === "BREAD" ? "foodBtnActive" : ""
-                  }`}
-                  onClick={() => setCategory("BREAD")}
-                >
-                  <img src={foodCategoryImg03} alt="" />
-                  Bread
-                </button>
-              </div>
-            </Col>
-
-            {/* product item card */}
-            {allProducts.map((item) => (
-              <Col md="4" xs="6" sm="6" lg="3" key={item.id} className="mt-5">
+            {hotPizza.map((item) => (
+              <Col md="4" xs="6" sm="6" lg="3" className="mt-5" key={item.id}>
                 <ProductCard item={item} />
               </Col>
             ))}
           </Row>
         </Container>
       </section>
-
       {/* why img */}
       <section>
         <Container>
@@ -265,46 +170,44 @@ const Home = () => {
             <Col lg="6" md="6">
               <div className="why_tasty-treat">
                 <h2 className="tasty_treat-title mb-4">
-                  Why <span>tasy treat?</span>
+                  Tại sao <span>chọn chúng tôi</span>
                 </h2>
-                <p className="tasty_treat-desc">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Labore id optio deserunt voluptatibus, cumque consectetur
-                  corrupti at, animi ut mollitia atque. Tempora corporis veniam
-                  reiciendis unde magnam quisquam eos nesciunt!
-                </p>
+                <p className="tasty_treat-desc"></p>
 
                 <ListGroup className="mt-5">
                   <ListGroupItem className="border-0 ps-0">
                     <p className="choose_us-title d-flex align-items-center gap-2">
                       <i class="ri-checkbox-circle-line"></i>
-                      Fresh and tasty food
+                      Nhanh nhất
                     </p>
                     <p className="choose_us-desc">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Rerum, eaque!
+                      GoodFood cung cấp dịch vụ giao đồ ăn nhanh nhất thị
+                      trường.
                     </p>
                   </ListGroupItem>
 
                   <ListGroupItem className="border-0 ps-0">
                     <p className=" choose_us-title d-flex align-items-center gap-2">
                       <i class="ri-checkbox-circle-line"></i>
-                      Quality support
+                      Dễ dàng nhất
                     </p>
                     <p className="choose_us-desc">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Rerum, eaque!
+                      Giờ đây, bạn chỉ cần thực hiện vài cú nhấp chuột hoặc chạm
+                      nhẹ là đã có thể đặt đồ ăn. Hãy đặt đồ ăn trực tuyến hoặc
+                      tải xuống siêu ứng dụng Grab của chúng tôi để có trải
+                      nghiệm nhanh hơn và thú vị hơn
                     </p>
                   </ListGroupItem>
 
                   <ListGroupItem className="border-0 ps-0">
                     <p className=" choose_us-title d-flex align-items-center gap-2">
                       <i class="ri-checkbox-circle-line"></i>
-                      Order from any location
+                      Đáp ứng mọi nhu cầu
                     </p>
                     <p className="choose_us-desc">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Rerum, eaque!
+                      Từ món ăn đặc sản địa phương đến các nhà hàng được ưa
+                      thích, nhiều lựa chọn đa dạng chắc chắn sẽ luôn làm hài
+                      lòng khẩu vị của bạn.
                     </p>
                   </ListGroupItem>
                 </ListGroup>
@@ -314,46 +217,27 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* hot pizza */}
-      <section className="pt-0">
-        <Container>
-          <Row>
-            <Col lg="12" className="text-center mb-5 ">
-              <h2>Hot Pizza</h2>
-            </Col>
-
-            {hotPizza.map((item) => (
-              <Col md="4" xs="6" sm="6" lg="3" className="mt-5" key={item.id}>
-                <ProductCard item={item} />
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </section>
-
-      {/*  network test motional img*/}
+      {/* text category */}
       <section>
         <Container>
           <Row>
-            <Col lg="6" md="6">
-              <div className="testimonial ">
-                <h5 className="testimonial_subtitle mb-4">Testimonial</h5>
-                <h2 className="testimonial_stitle mb-4">
-                  What our <span>customers</span> are saying
-                </h2>
-                <p className="testimonial__desc">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Distinctio quasi qui minus quos sit perspiciatis inventore
-                  quis provident placeat fugiat!
-                </p>
-
-                <TestimonialSlider />
-              </div>
+            <Col lg="12" className="text-center">
+              <h5 className="feature_subtitle mb-4">Cách chúng tôi phục vụ</h5>
+              <h2 className="feature_title">Chỉ cần bạn đợi ở nhà </h2>
+              <h2 className="feature_title">
+                chúng tôi sẽ <span>Tới ngay</span>
+              </h2>
             </Col>
-
-            <Col lg="6" md="6">
-              <img src={networkImg} alt="testimonial-img" className="w-100" />
-            </Col>
+            {/* feature item */}
+            {featureData.map((item, index) => (
+              <Col lg="4" md="4" key={index} className="mt-5">
+                <div className="feature_item text-center p-4">
+                  <img src={item.imgUrl} alt="" className="w-25 mb-3" />
+                  <h5 className="fw-bold">{item.title}</h5>
+                  <p>{item.desc}</p>
+                </div>
+              </Col>
+            ))}
           </Row>
         </Container>
       </section>
