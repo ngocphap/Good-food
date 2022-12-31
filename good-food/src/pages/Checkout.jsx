@@ -17,19 +17,18 @@ import { cartActions } from "../store/shopping-cart/cartSlice";
 import useAuth from "../custom-hooks/useAuth";
 
 const Checkout = () => {
-  const [address, setAddress] = useState("");
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [numberSDT, setNumberSDT] = useState(0);
-
-  const { currentUser } = useAuth();
-  console.log(currentUser.numberSDT);
-  const shippingInfo = [];
-
   const cartItems = useSelector((state) => state.cart.cartItems);
+
   const totalQty = useSelector((state) => state.cart.totalQuantity);
+
+  const [enterName, setEnterName] = useState("");
+  const [enterEmail, setEnterEmail] = useState("");
+  const [enterNumber, setEnterNumber] = useState("");
+  const [enterCountry, setEnterCountry] = useState("");
+  const [enterCity, setEnterCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+
+  const shippingInfo = [];
   const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
   const shippingCost = 30;
 
@@ -38,10 +37,12 @@ const Checkout = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     const userShippingAddress = {
-      name: displayName,
-      email: email,
-      phone: numberSDT,
-      address: address,
+      name: enterName,
+      email: enterEmail,
+      phone: enterNumber,
+      country: enterCountry,
+      city: enterCity,
+      postalCode: postalCode,
     };
 
     shippingInfo.push(userShippingAddress);
@@ -62,8 +63,8 @@ const Checkout = () => {
                     type="email"
                     placeholder="Nhập Email"
                     required
-                    value={currentUser.email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    // value={currentUser.email}
+                    onChange={(e) => setEnterName(e.target.value)}
                   />
                 </FormGroup>
 
@@ -72,8 +73,8 @@ const Checkout = () => {
                     type="text"
                     placeholder="Họ và tên"
                     required
-                    value={currentUser.displayName}
-                    onChange={(e) => setDisplayName(e.target.value)}
+                    // value={currentUser.displayName}
+                    onChange={(e) => setEnterEmail(e.target.value)}
                   />
                 </FormGroup>
 
@@ -82,8 +83,8 @@ const Checkout = () => {
                     type="text"
                     placeholder="Số điện thoại"
                     required
-                    value={currentUser.numberSDT}
-                    onChange={(e) => setNumberSDT(e.target.value)}
+                    // value={currentUser.numberSDT}
+                    onChange={(e) => setEnterNumber(e.target.value)}
                   />
                 </FormGroup>
                 <FormGroup className="form_group">
@@ -91,13 +92,13 @@ const Checkout = () => {
                     type="text"
                     placeholder="Địa chỉ"
                     required
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={(e) => setEnterCountry(e.target.value)}
                   />
                 </FormGroup>
 
-                <Button type="submit" className="bg-danger">
+                {/* <Button type="submit" className="bg-danger">
                   Thanh toán
-                </Button>
+                </Button> */}
               </Form>
             </Col>
 

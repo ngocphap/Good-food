@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import products from "../assets/fake-data/products";
+import { products } from "../assets/fake-data/products";
 import { useParams } from "react-router-dom";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/common-section/CommonSection";
@@ -12,6 +12,7 @@ import { cartActions } from "../store/shopping-cart/cartSlice";
 import "../styles/product-details.css";
 import productImg from "../assets/images/category-01.png";
 import ProductCard from "../components/UI/product-card/ProductCard";
+import Comments from "../components/UI/comments/Comments";
 
 const FoodDetails = () => {
   const [tab, setTab] = useState("desc");
@@ -132,7 +133,7 @@ const FoodDetails = () => {
                 </div>
               ) : (
                 <div className="tab_form mb-3">
-                  <div className="review pt-5">
+                  {/* <div className="review pt-5">
                     <p className="user_name mb-0">Nguyễn văn A</p>
                     <p className="user_email">NVA@gmail.com</p>
                     <p className="feedback_text">Ngon tuyệt</p>
@@ -148,8 +149,12 @@ const FoodDetails = () => {
                     <p className="user_name mb-0">Nguyễn Văn C</p>
                     <p className="user_email">NVC@gmail.com</p>
                     <p className="feedback_text">pizzza</p>
-                  </div>
-                  <form className="form" onSubmit={submitHandler}>
+                  </div> */}
+                  <Comments
+                    // commentsUrl="http://localhost:3004/comments"
+                    currentUserId="1"
+                  />
+                  {/* <form className="form" onSubmit={submitHandler}>
                     <div className="form_group">
                       <input
                         type="text"
@@ -181,7 +186,7 @@ const FoodDetails = () => {
                     <button type="submit" className="addTOCart_btn">
                       Đăng
                     </button>
-                  </form>
+                  </form> */}
                 </div>
               )}
             </Col>

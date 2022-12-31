@@ -83,8 +83,8 @@ const Tr = (props) => {
       </td>
       <td className="text-center">{quantity}</td>
       <td className="text-center ">
-        <Button className="bg-danger border-0 w-50">
-          <i class="ri-delete-bin-line fs-5" onClick={deleteItem}></i>
+        <Button className="bg-danger border-0 w-100 ">
+          <i class="ri-delete-bin-line fs-6 " onClick={deleteItem}></i>
         </Button>
       </td>
     </tr>

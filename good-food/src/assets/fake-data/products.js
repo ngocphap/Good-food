@@ -90,6 +90,26 @@ import product_22_image_03 from "../images/chicken_chienMixwing_1.png";
 import product_23_image_01 from "../images/chicken_combobbq_1.png";
 import product_23_image_02 from "../images/chicken_combobbq3_1.png";
 import product_23_image_03 from "../images/chicken_combogarangioncay_1.png";
+//  category
+import foodCategoryImg01 from "../images/logofood-removebg-preview.png";
+import foodCategoryImg02 from "../images/pizza.png";
+import foodCategoryImg03 from "../images/pasta1-removebg-preview.png";
+import foodCategoryImg04 from "../images/salad1-removebg-preview.png";
+import foodCategoryImg05 from "../images/rice1-removebg-preview.png";
+import foodCategoryImg06 from "../images/water1-removebg-preview.png";
+import foodCategoryImg07 from "../images/beer1-removebg-preview.png";
+import foodCategoryImg08 from "../images/hamburger.png";
+import foodCategoryImg09 from "../images/chicken1-removebg-preview.png";
+//
+import Salad from "../images/Salad_1.jpg";
+import Pizza from "../images/Pizza_1.jpg";
+import Burger from "../images/hamburger_1.jpg";
+import Pasta from "../images/Pasta.jpeg";
+import Chicken from "../images/Chicken_1.jpg";
+import Rice from "../images/Rice.jpeg";
+import Water from "../images/water.jpeg";
+import Beer from "../images/beer_demo_3.png";
+
 const products = [
   {
     id: "01",
@@ -654,4 +674,55 @@ const products = [
   },
 ];
 
-export default products;
+const DatalistCategory = [
+  {
+    srcImg: foodCategoryImg02,
+    imgUrl: Pizza,
+    nameCategory: "PIZZA",
+    TitleCategory: "Pizza",
+  },
+  {
+    srcImg: foodCategoryImg03,
+    imgUrl: Pasta,
+    nameCategory: "PASTA",
+    TitleCategory: "Mỳ Ý",
+  },
+  {
+    srcImg: foodCategoryImg04,
+    imgUrl: Salad,
+    nameCategory: "SALAD",
+    TitleCategory: "Salad Rau Trộn",
+  },
+  {
+    srcImg: foodCategoryImg05,
+    imgUrl: Rice,
+    nameCategory: "RICE",
+    TitleCategory: "Các loại cơm",
+  },
+  {
+    srcImg: foodCategoryImg06,
+    imgUrl: Water,
+    nameCategory: "WATER",
+    TitleCategory: "Nước giải khát",
+  },
+  {
+    srcImg: foodCategoryImg07,
+    imgUrl: Beer,
+    nameCategory: "BEER",
+    TitleCategory: "Bia",
+  },
+  {
+    srcImg: foodCategoryImg08,
+    imgUrl: Burger,
+    nameCategory: "BURGER",
+    TitleCategory: "Hamburger",
+  },
+  {
+    srcImg: foodCategoryImg09,
+    imgUrl: Chicken,
+    nameCategory: "CHICKEN",
+    TitleCategory: "Gà chiên xù",
+  },
+];
+
+export { products, DatalistCategory };

@@ -1,60 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Button, Col, Container, Row } from "reactstrap";
 
-// import "../styles/hero-section.css";
+import "../food-popular/foodPopular.css";
+import { products, DatalistCategory } from "../../../assets/fake-data/products";
 
-// import "../styles/home.css";
-// import "../food-popular/foodPopular.css";
-import products from "../../../assets/fake-data/products";
-
-import foodCategoryImg01 from "../../../assets/images/hamburger.png";
+import foodCategoryImg01 from "../../../assets/images/logofood-removebg-preview.png";
 import ProductCard from "../product-card/ProductCard";
-import { Carousel } from "react-responsive-carousel";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-const DatalistCategory = [
-  {
-    srcImg: foodCategoryImg01,
-    nameCategory: "PIZZA",
-    TitleCategory: "Pizza",
-  },
-  {
-    srcImg: foodCategoryImg01,
-    nameCategory: "PASTA",
-    TitleCategory: "Mỳ Ý",
-  },
-  {
-    srcImg: foodCategoryImg01,
-    nameCategory: "SALAD",
-    TitleCategory: "Salad Rau Trộn",
-  },
-  {
-    srcImg: foodCategoryImg01,
-    nameCategory: "RICE",
-    TitleCategory: "Các loại cơm",
-  },
-  {
-    srcImg: foodCategoryImg01,
-    nameCategory: "WATER",
-    TitleCategory: "Nước giải khát",
-  },
-  {
-    srcImg: foodCategoryImg01,
-    nameCategory: "BEER",
-    TitleCategory: "Bia",
-  },
-  {
-    srcImg: foodCategoryImg01,
-    nameCategory: "BURGER",
-    TitleCategory: "Hamburger",
-  },
-  {
-    srcImg: foodCategoryImg01,
-    nameCategory: "CHICKEN",
-    TitleCategory: "Gà chiên xù",
-  },
-];
 
 const FoodPopular = () => {
   // su dung useState va useEffect de tim va load san pham
@@ -146,14 +101,15 @@ const FoodPopular = () => {
     speed: 1000,
     autoplaySpeed: 3000,
     swipeToSlide: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
+
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 4,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -161,14 +117,14 @@ const FoodPopular = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 3,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -186,22 +142,30 @@ const FoodPopular = () => {
             <div className=" bg-body ">
               <Slider {...settings}>
                 <Button
-                  className={`all_btn d-flex align-items-center m-5 bg-danger gap-3 w-75 ${
-                    category === "ALL" ? "foodBtnActive" : ""
+                  className={`all_btn d-flex align-items-center m-5  gap-3 w-75 ${
+                    category === "ALL"
+                      ? "bg-white text-dark"
+                      : "bg-danger text-white"
                   }`}
                   onClick={() => setCategory("ALL")}
                 >
-                  <img src={foodCategoryImg01} className="" alt="" />
+                  <img
+                    src={foodCategoryImg01}
+                    className="img_category"
+                    alt=""
+                  />
                   All
                 </Button>
                 {DatalistCategory.map((item, index) => (
                   <Button
                     className={`d-flex w-75 align-items-center m-5 bg-danger gap-3 ${
-                      category === `${item.nameCategory}` ? "foodBtnActive" : ""
+                      category === `${item.nameCategory}`
+                        ? "bg-white text-dark"
+                        : "bg-danger text-white"
                     }`}
                     onClick={() => setCategory(`${item.nameCategory}`)}
                   >
-                    <img src={item.srcImg} alt="" />
+                    <img src={item.srcImg} alt="" className="img_category" />
                     {item.TitleCategory}
                   </Button>
                 ))}

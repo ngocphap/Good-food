@@ -4,7 +4,7 @@ import CommonSection from "../components/UI/common-section/CommonSection";
 
 import { Container, Row, Col } from "reactstrap";
 
-import products from "../assets/fake-data/products";
+import { products } from "../assets/fake-data/products";
 import ProductCard from "../components/UI/product-card/ProductCard";
 import ReactPaginate from "react-paginate";
 
@@ -50,6 +50,7 @@ const AllFoods = () => {
             <Col lg="6" md="6" sm="6" xs="12">
               <div className="search_widget d-flex align-items-center justify-content-between ">
                 <input
+                  className="w-100"
                   type="text"
                   placeholder="Tìm kiếm"
                   value={searchTerm}
@@ -63,11 +64,11 @@ const AllFoods = () => {
             <Col lg="6" md="6" sm="6" xs="12" className="mb-5">
               <div className="sorting_widget text-end">
                 <select className="w-50">
-                  <option>Default</option>
-                  <option value="ascending">Alphabetically, A-Z</option>
-                  <option value="descending">Alphabetically, Z-A</option>
-                  <option value="high-price">High Price</option>
-                  <option value="low-price">Low Price</option>
+                  <option>Tất cả</option>
+                  <option value="ascending">Theo chữ cái A-Z</option>
+                  <option value="descending">Theo chữ cái Z-A</option>
+                  <option value="high-price">Theo giá cao</option>
+                  <option value="low-price">Theo giá thấp</option>
                 </select>
               </div>
             </Col>

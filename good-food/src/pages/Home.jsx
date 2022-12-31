@@ -23,7 +23,7 @@ import featureImg01 from "../assets/images/Quick-delivery.png";
 import featureImg02 from "../assets/images/service-02.png";
 import featureImg03 from "../assets/images/service-03.png";
 
-import products from "../assets/fake-data/products.js";
+import { products } from "../assets/fake-data/products.js";
 
 import ProductCard from "../components/UI/product-card/ProductCard.jsx";
 
@@ -55,10 +55,6 @@ const featureData = [
 ];
 
 const Home = () => {
-  // su dung useState va useEffect de tim va load san pham
-  // const [category, setCategory] = useState("ALL");
-  // const [allProducts, setAllProducts] = useState(products);
-
   const [hotPizza, setHotPizza] = useState([]);
 
   useEffect(() => {
@@ -246,3 +242,6 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
