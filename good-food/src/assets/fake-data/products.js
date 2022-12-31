@@ -108,7 +108,7 @@ import Pasta from "../images/Pasta.jpeg";
 import Chicken from "../images/Chicken_1.jpg";
 import Rice from "../images/Rice.jpeg";
 import Water from "../images/water.jpeg";
-import Beer from "../images/beer_demo_3.png";
+import Beer from "../images/bee.webp";
 
 const products = [
   {

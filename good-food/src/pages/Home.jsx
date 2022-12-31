@@ -98,7 +98,7 @@ const Home = () => {
                   </button>
                 </div>
 
-                <div className=" hero_service  d-flex align-items-center gap-5 mt-5 ">
+                {/* <div className=" hero_service  d-flex align-items-center gap-5 mt-5 ">
                   <p className=" d-flex align-items-center gap-2 ">
                     <span className="shipping_icon">
                       <i class="ri-car-line"></i>
@@ -112,7 +112,7 @@ const Home = () => {
                     </span>
                     100% An toàn khi thanh toán
                   </p>
-                </div>
+                </div> */}
               </div>
             </Col>
 
@@ -242,6 +242,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
